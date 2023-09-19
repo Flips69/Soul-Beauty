@@ -29,7 +29,7 @@ class ServicoController extends Controller
         if(!isset($usuario)){
             return response()->json([
                 'status' => false,
-                'message' => "Usuário não encontrado"
+                'message' => "Serviço não encontrado"
             ]);
         }
 
@@ -37,7 +37,7 @@ class ServicoController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => "Usuário excluído com sucesso"
+            'message' => "Serviço excluído com sucesso"
         ]);
     }
 
@@ -47,7 +47,7 @@ class ServicoController extends Controller
         if(!isset($usuario)){
             return response()->json([
                 'status' => false,
-                'message' => "Usuário não encontrado"
+                'message' => "Serviço não encontrado"
             ]);
         }
 
@@ -74,4 +74,33 @@ class ServicoController extends Controller
     
 }
 
+public function pesquisaPorNome(Request $request){
+    $usuarios = servico::where('nome', 'like', '%'. $request->nome .'%' )->get(); 
+
+    if (count($usuarios) > 0) {
+        return response()->json([
+            'status' => true,
+            'data' => $usuarios
+        ]);
+    }
+    return response()->json([
+        'status' => false,
+        'message' => 'Não há resultados para pesquisa.'
+    ]);
+}
+
+public function pesquisarPorDescricao($descricao){
+    $usuario = servico::where('descricao', $descricao, )->first();
+    if($usuario == null){
+        return response()->json([
+            'status' => true,
+            'message' =>  "Serviço não encontrado"
+        ]);
+    }
+    
+    return response()->json([
+        'status' => true,
+        'data' => $usuario
+    ]);
+}
 }
