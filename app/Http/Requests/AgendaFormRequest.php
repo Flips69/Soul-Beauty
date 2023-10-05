@@ -30,4 +30,28 @@ class AgendaFormRequest extends FormRequest
             'valor' => 'required',
         ];
     }
+
+     public function failedValidation(Validator $validator){
+        throw new HttpResponseException(response()->json([
+            'success' => false,
+            'error' => $validator->errors()
+        ]));
+    }
+
+
+    public function messages(){
+        return  [
+            'profissional.required' => 'O campo profissional é obrigatório.',
+            
+            'data_hora.required' =>  'Horario é obrigatprio',
+            'data_hora.date' => 'O formato é inválido',
+            
+            'pagamento.required' => 'O campo pagamento é obrigatório',
+            'pagamento.max' => 'o campo deve conter no máximo 20 caracteres',
+            'pagamento.min' => 'o campo deve conter no minímo 3 caracteres',
+
+            'valor.required'=>'Valor é obrigatório'
+            
+        ];
+}
 }
