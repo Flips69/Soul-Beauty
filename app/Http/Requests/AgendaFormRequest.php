@@ -41,14 +41,14 @@ class AgendaFormRequest extends FormRequest
 
     public function messages(){
         return  [
-            'profissional.required' => 'O campo profissional é obrigatório.',
+            'profissional_id.required' => 'O campo profissional é obrigatório.',
             
-            'data_hora.required' =>  'Horario é obrigatprio',
+            'data_hora.required' =>  'Horário é obrigatprio',
             'data_hora.date' => 'O formato é inválido',
             
-            'pagamento.required' => 'O campo pagamento é obrigatório',
-            'pagamento.max' => 'o campo deve conter no máximo 20 caracteres',
-            'pagamento.min' => 'o campo deve conter no minímo 3 caracteres',
+            'tipo_pagamento.required' => 'O campo pagamento é obrigatório',
+            'tipo_pagamento.max' => 'o campo deve conter no máximo 20 caracteres',
+            'tipo_pagamento.min' => 'o campo deve conter no minímo 3 caracteres',
 
             'valor.required'=>'Valor é obrigatório'
             
