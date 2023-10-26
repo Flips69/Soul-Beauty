@@ -89,18 +89,18 @@ public function pesquisaPorNome(Request $request){
     ]);
 }
 
-public function pesquisarPorDescricao($descricao){
-    $usuario = servico::where('descricao', $descricao, )->first();
-    if($usuario == null){
-        return response()->json([
-            'status' => true,
-            'message' =>  "Serviço não encontrado"
-        ]);
-    }
-    
+public function pesquisarPorDescricao(Request $request){
+    $servicos = Servico::where('descricao', 'like', '%'.$request->descricao.'%')->get();
+
+   if(count($servicos) > 0){
     return response()->json([
         'status' => true,
-        'data' => $usuario
+        'data' => $servicos
+        ]);
+    }
+    return response()->json([
+        'status'=> false,
+        'message' => "Serviço não encontrado"
     ]);
 }
 }
