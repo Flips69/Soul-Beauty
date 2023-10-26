@@ -55,9 +55,6 @@ return response()->json([
 public function update(Request $request){
 $usuario = Cliente::find($request->id);
 
-$request->user()->fill([
-    'password' => Hash::make($request->password)
-])->save();
 
 if(!isset($usuario)){
     return response()->json([
