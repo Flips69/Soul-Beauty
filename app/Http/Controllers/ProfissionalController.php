@@ -48,7 +48,7 @@ $profissional->delete();
 
 return response()->json([
     'status'=> false,
-    'message' => "Profissional excliuído com sucesso"
+    'message' => "Profissional excluído com sucesso"
 ]);
 }
 
