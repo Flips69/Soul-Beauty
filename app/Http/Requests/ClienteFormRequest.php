@@ -107,7 +107,7 @@ class ClienteFormRequest extends FormRequest
         'cep.min' => 'O CEP deve conter no mínimo 8 caracteres',
 
 
-        'complemento' => 'O complemento deve conter no máximo 150 caracteres',
+        'complemento.max' => 'O complemento deve conter no máximo 150 caracteres',
 
         
         'password.required' => 'A senha é obrigatória',

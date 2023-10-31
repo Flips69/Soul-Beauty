@@ -28,7 +28,7 @@ class ProfissionalFormRequest extends FormRequest
                 'celular' => 'required|max:11|min:10',
                 'email' => 'required|email|max:120|unique:profissionals,email',
                 'cpf' => 'required|max:11|min:11|unique:profissionals,cpf',
-                'dataNascimento' => 'required',
+                'dataNascimento' => 'required|date',
                 'cidade' => 'required|max:120',
                 'estado' => 'required|max:2|min:2',
                 'pais' => 'required|max:80',
@@ -38,7 +38,7 @@ class ProfissionalFormRequest extends FormRequest
                 'cep' => 'required|max:8|min:8',
                 'complemento' => 'max:150',
                 'password' => 'required',
-                'salario' => 'required',
+                'salario' => 'required|max:8|min:8|decimal: 2,4',
         ];
     }
 public function failedValidation(Validator $validator){
@@ -111,6 +111,9 @@ return [
 
     
     'salario.required' => 'O salário é obrigatório',
+    'salario.max' => 'O salario deve conter no máximo 8 caracteres',
+    'salario.min' => 'O salario deve conter no mínimo 8 caracteres',
+    'salario.decimal' => 'O salario deve conter apenas números'
 ];
 }
 }
