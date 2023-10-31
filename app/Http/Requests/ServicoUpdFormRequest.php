@@ -33,7 +33,7 @@ class ServicoUpdFormRequest extends FormRequest
 
 public function failedValidation(Validator $validator){
     throw new HttpResponseException(response()->json([
-        'sccess' => false,
+        'success' => false,
         'error' => $validator->errors()
     ]));
 }
