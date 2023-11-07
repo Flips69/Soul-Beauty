@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfissionalFormRequest;
+use App\Http\Requests\ProfissionalRequest;
 use App\Models\Profissional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class ProfissionalController extends Controller
 {
-    public function store(ProfissionalFormRequest $request){
+    public function store(ProfissionalRequest $request){
         $profissional = Profissional::create([
             'nome' => $request->nome,
             'celular' => $request->celular,
@@ -48,7 +48,7 @@ $profissional->delete();
 
 return response()->json([
     'status'=> false,
-    'message' => "Profissional excluído com sucesso"
+    'message' => "Profissional excliuído com sucesso"
 ]);
 }
 
