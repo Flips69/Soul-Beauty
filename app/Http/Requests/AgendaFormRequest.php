@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AgendaFormRequest extends FormRequest
+class AgendaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -30,28 +30,4 @@ class AgendaFormRequest extends FormRequest
             'valor' => 'required',
         ];
     }
-
-     public function failedValidation(Validator $validator){
-        throw new HttpResponseException(response()->json([
-            'success' => false,
-            'error' => $validator->errors()
-        ]));
-    }
-
-
-    public function messages(){
-        return  [
-            'profissional_id.required' => 'O campo profissional é obrigatório.',
-            
-            'data_hora.required' =>  'Horário é obrigatprio',
-            'data_hora.date' => 'O formato é inválido',
-            
-            'tipo_pagamento.required' => 'O campo pagamento é obrigatório',
-            'tipo_pagamento.max' => 'o campo deve conter no máximo 20 caracteres',
-            'tipo_pagamento.min' => 'o campo deve conter no minímo 3 caracteres',
-
-            'valor.required'=>'Valor é obrigatório'
-            
-        ];
-}
 }
