@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('complemento', 150)->nullable(true);
             $table->string('password')->nullable(false);
             $table->timestamps();
+
         });
     }
 
