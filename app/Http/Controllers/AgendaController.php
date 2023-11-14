@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class AgendaController extends Controller
 {
-    public function store(AgendaFormRequest $request){
+    public function store(Request $request){
         $agenda = Agenda::create([
             'profissional_id' => $request->profissional_id,
+            'cliente_id' => $request->cliente_id,
+            'servico_id' => $request->servico_id,
             'data_hora' => $request->data_hora,
             'tipo_pagamento' => $request->tipo_pagamento,
             'valor' => $request->valor,
@@ -33,7 +35,8 @@ class AgendaController extends Controller
             'data' => $agenda
         ]);
     }
-    public function pesquisarAgendaPorNome(AgendaFormRequest $request){
+}
+    public function pesquisarAgendaNome(Request $request){
         $agenda = Agenda::where('profissional_id', 'like', '%' . $request->profissional_id . '%')->get();
 
         if (count($agenda) > 0) {
@@ -72,7 +75,7 @@ class AgendaController extends Controller
             'message' => "Agenda excluída com sucesso."
         ]);
     }
-    public function updateAgenda(AgendaFormRequest $request){
+    public function updateAgenda(Request $request){
         $agenda = Agenda::find($request->id);
         if (!isset($agenda)) {
             return response()->json([

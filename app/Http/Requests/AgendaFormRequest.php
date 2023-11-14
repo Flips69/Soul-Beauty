@@ -25,9 +25,9 @@ class AgendaRequest extends FormRequest
             'profissional_id' => 'required',
             'cliente_id' => 'required',
             'servico_id' => 'required',
-            'data_hora' => 'required',
+            'data_hora' => 'required|date',
             'tipo_pagamento' => 'required|max:20|min:3',
-            'valor' => 'required',
+            'valor' => 'required|decimal: 2,4',
         ];
     }
 }

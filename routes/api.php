@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfissionalController;
 use App\Http\Controllers\ServicoController;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Servico
 Route::post('servico/store',
 [ServicoController::class, 'store']);
 
@@ -36,6 +38,7 @@ Route::get('servico/retornarTodos',
 [ServicoController::class, 'retornarTodos']);
 
 
+//Profissional
 Route::post('profissional/store',
 [ProfissionalController::class, 'store']);
 
@@ -58,8 +61,9 @@ Route::get('profissional/email',
 [ProfissionalController::class, 'pesquisarPorEmail']);
 
 
+//Cliente
 Route::post('cliente/store',
-[clienteController::class, 'store']);
+[ClienteController::class, 'store']);
 
 Route::delete('cliente/delete/{id}',
 [ClienteController::class, 'excluir']);
@@ -78,3 +82,7 @@ Route::get('cliente/cpf',
 
 Route::get('cliente/email',
 [ClienteController::class, 'pesquisarPorEmail']);
+
+//Agenda
+Route::post('agenda/store',
+[AgendaController::class, 'store']);
