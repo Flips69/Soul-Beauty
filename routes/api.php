@@ -86,3 +86,15 @@ Route::get('cliente/email',
 //Agenda
 Route::post('agenda/store',
 [AgendaController::class, 'store']);
+
+Route::get('agenda/nome',
+[AgendaController::class, 'pesquisarPorData']);
+
+Route::get('agenda/profissional',
+[AgendaController::class, 'pesquisarProfissionalAgenda']);
+
+Route::put('agenda/update',
+[AgendaController::class, 'updateAgenda']);
+
+Route::delete('agenda/delete/{id}',
+[AgendaController::class, 'excluirAgenda']);

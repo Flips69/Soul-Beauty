@@ -20,14 +20,14 @@ class AgendaController extends Controller
 
         return response()->json([
             "success" => true,
-            "message" => "Agenda foi cadastrada com sucesso.",
+            "message" => "Compromisso na agenda foi cadastrado com sucesso.",
             "data" => $agenda
 
         ], 200);
     }
     public function pesquisarPorData(Request $request){
    
-    $agenda = Agenda::where('data_hora', '>=', $request->data_hora ) -> get();
+    $agenda = Agenda::where('data_hora', '>=', '%'.$request->data_hora.'%') -> get();
         
     if (count($agenda) > 0) {
         return response()->json([
@@ -36,7 +36,7 @@ class AgendaController extends Controller
         ]);
     }
 }
-    public function pesquisarAgendaNome(Request $request){
+    public function pesquisarProfissionalAgenda(Request $request){
         $agenda = Agenda::where('profissional_id', 'like', '%' . $request->profissional_id . '%')->get();
 
         if (count($agenda) > 0) {
@@ -65,14 +65,14 @@ class AgendaController extends Controller
         if (!isset($agenda)) {
             return response()->json([
                 'status' => false,
-                'message' => "Agenda não foi encontrada."
+                'message' => "Compromisso não foi encontrado na agenda."
             ]);
         }
 
         $agenda->delete();
         return response()->json([
             'status' => true,
-            'message' => "Agenda excluída com sucesso."
+            'message' => "Compromisso excluído da agenda com sucesso."
         ]);
     }
     public function updateAgenda(Request $request){
@@ -80,7 +80,7 @@ class AgendaController extends Controller
         if (!isset($agenda)) {
             return response()->json([
                 'status' => false,
-                'message' => "Cliente não foi encontrado."
+                'message' => "Compromisso não foi encontrado na agenda."
             ]);
         }
 
@@ -104,7 +104,7 @@ class AgendaController extends Controller
         $agenda->update();
         return response()->json([
             'status' => true,
-            'message' => 'Agenda foi atualizada.'
+            'message' => 'Compromisso na agenda foi atualizado.'
         ]);
     }
 }
