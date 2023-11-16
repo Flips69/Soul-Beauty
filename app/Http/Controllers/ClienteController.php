@@ -49,7 +49,7 @@ $cliente->delete();
 
 return response()->json([
     'status'=> false,
-    'message' => "Cliente excliuído com sucesso"
+    'message' => "Cliente excluído com sucesso"
 ]);
 }
 

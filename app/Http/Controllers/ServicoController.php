@@ -38,7 +38,7 @@ class ServicoController extends Controller
 
     return response()->json([
         'status'=> false,
-        'message' => "Serviço excliuído com sucesso"
+        'message' => "Serviço excluído com sucesso"
 ]);
 }
 
