@@ -19,8 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Servico
-Route::post('servico/store',
-[ServicoController::class, 'store']);
+Route::post('servico/store',[ServicoController::class, 'store']);
 
 Route::delete('servico/delete/{id}',
 [ServicoController::class, 'excluir']);
@@ -82,6 +81,9 @@ Route::get('cliente/cpf',
 
 Route::get('cliente/email',
 [ClienteController::class, 'pesquisarPorEmail']);
+
+Route::get('cliente/retornarClientes',
+[ClienteController::class, 'retornarTodosClientes']);
 
 //Agenda
 Route::post('agenda/store',
