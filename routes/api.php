@@ -85,6 +85,9 @@ Route::get('cliente/email',
 Route::get('cliente/retornarClientes',
 [ClienteController::class, 'retornarTodosClientes']);
 
+Route::get('cliente/find/{id}',
+[ClienteController::class, 'pesquisarPorId']);
+
 //Agenda
 Route::post('agenda/store',
 [AgendaController::class, 'store']);
