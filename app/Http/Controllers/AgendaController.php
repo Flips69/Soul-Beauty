@@ -75,8 +75,9 @@ class AgendaController extends Controller
             'message' => "Compromisso excluído da agenda com sucesso."
         ]);
     }
-    public function updateAgenda(Request $request){
+    public function update(Request $request){
         $agenda = Agenda::find($request->id);
+
         if (!isset($agenda)) {
             return response()->json([
                 'status' => false,
@@ -84,24 +85,32 @@ class AgendaController extends Controller
             ]);
         }
 
-        if (isset($request->profissional)){
+        if (isset($request->profissional_id)){
             $agenda->profissional_id = $request->profissional_id;
         }
 
-        if (isset($request->cliente)){
+        if (isset($request->cliente_id)){
             $agenda->cliente_id = $request->cliente_id;
         }
+
+        if(isset($request->servico_id)){
+            $agenda->servico_id = $request->servico_id;
+        }
+
         if (isset($request->data_hora)){
             $agenda->data_hora = $request->data_hora;
         }
-        if (isset($request->pagamento)){
+
+        if (isset($request->tipo_pagamento)){
             $agenda->tipo_pagamento = $request->tipo_pagamento;
         }
+        
         if (isset($request->valor)){
             $agenda->valor = $request->valor;
         }
        
         $agenda->update();
+
         return response()->json([
             'status' => true,
             'message' => 'Compromisso na agenda foi atualizado.'

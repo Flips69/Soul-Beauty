@@ -96,7 +96,7 @@ Route::get('agenda/profissional',
 [AgendaController::class, 'pesquisarProfissionalAgenda']);
 
 Route::put('agenda/update',
-[AgendaController::class, 'updateAgenda']);
+[AgendaController::class, 'update']);
 
 Route::delete('agenda/delete/{id}',
 [AgendaController::class, 'excluirAgenda']);
