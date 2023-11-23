@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Servico
-Route::post('servico/store',[ServicoController::class, 'store']);
+Route::post('servico/store',
+[ServicoController::class, 'store']);
 
 Route::delete('servico/delete/{id}',
 [ServicoController::class, 'excluir']);
@@ -30,11 +31,14 @@ Route::put('servico/update',
 Route::post('servico/nome',
 [ServicoController::class, 'pesquisarPorNome']);
 
-Route::get('servico/find/descricao',
+Route::post('servico/find/descricao',
 [ServicoController::class, 'pesquisarPorDescricao']); 
 
 Route::get('servico/retornarTodos',
 [ServicoController::class, 'retornarTodos']);
+
+Route::get('servico/find/{id}',
+[ServicoController::class, 'pesquisarPorId']);
 
 
 //Profissional
@@ -47,17 +51,23 @@ Route::delete('profissional/delete/{id}',
 Route::put('profissional/update',
 [ProfissionalController::class, 'update']);
 
-Route::get('profissional/nome',
+Route::post('profissional/nome',
 [ProfissionalController::class, 'pesquisarPorNome']);
 
-Route::get('profissional/celular',
+Route::post('profissional/celular',
 [ProfissionalController::class, 'pesquisarPorCelular']);
 
-Route::get('profissional/cpf',
+Route::post('profissional/cpf',
 [ProfissionalController::class, 'pesquisarPorCpf']);
 
-Route::get('profissional/email',
+Route::post('profissional/email',
 [ProfissionalController::class, 'pesquisarPorEmail']);
+
+Route::get('profissional/retornarProfissionais',
+[ProfissionalController::class, 'retornarTodosProfissionais']);
+
+Route::get('profissional/find/{id}',
+[ProfissionalController::class, 'pesquisarPorId']);
 
 
 //Cliente
@@ -70,16 +80,16 @@ Route::delete('cliente/delete/{id}',
 Route::put('cliente/update',
 [ClienteController::class, 'update']);
 
-Route::get('cliente/nome',
+Route::post('cliente/nome',
 [ClienteController::class, 'pesquisarPorNome']);
 
-Route::get('cliente/celular',
+Route::post('cliente/celular',
 [ClienteController::class, 'pesquisarPorCelular']);
 
-Route::get('cliente/cpf',
+Route::post('cliente/cpf',
 [ClienteController::class, 'pesquisarPorCpf']);
 
-Route::get('cliente/email',
+Route::post('cliente/email',
 [ClienteController::class, 'pesquisarPorEmail']);
 
 Route::get('cliente/retornarClientes',
@@ -92,10 +102,10 @@ Route::get('cliente/find/{id}',
 Route::post('agenda/store',
 [AgendaController::class, 'store']);
 
-Route::get('agenda/nome',
+Route::post('agenda/nome',
 [AgendaController::class, 'pesquisarPorData']);
 
-Route::get('agenda/profissional',
+Route::post('agenda/profissional',
 [AgendaController::class, 'pesquisarProfissionalAgenda']);
 
 Route::put('agenda/update',

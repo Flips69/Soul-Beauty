@@ -114,4 +114,21 @@ public function retornarTodos(){
         'data' => $servicos
     ]);
 }
+public function pesquisarPorId($id){
+    $servicos = Servico::find($id);
+
+
+    if($servicos == null){
+        return response()->json([
+            'status' => true,
+            'message' =>  "Serviço não encontrado"
+        ]);
+    }
+
+
+    return response()->json([
+        'status' => true,
+        'data' => $servicos
+    ]);
+}
 }

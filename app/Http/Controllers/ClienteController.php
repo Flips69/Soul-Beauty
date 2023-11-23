@@ -29,7 +29,7 @@ class ClienteController extends Controller
         ]);
 
         return response()->json([
-            "sucess" => true,
+            "status" => true,
             "message" => "Cliente cadastrado com sucesso",
             "data" => $cliente
         ],200);
@@ -192,6 +192,26 @@ if(count($clientes) > 0){
 }
     public function retornarTodosClientes(){
     $clientes = Cliente::all();
+
+    if(count($clientes)>0){
+         return response()->json([
+        'status' => true,
+        'data' => $clientes
+    ]);}
+   
+}
+public function pesquisarPorId($id){
+    $clientes = Cliente::find($id);
+
+
+    if($clientes == null){
+        return response()->json([
+            'status' => true,
+            'message' =>  "Cliente não encontrado"
+        ]);
+    }
+
+
     return response()->json([
         'status' => true,
         'data' => $clientes
