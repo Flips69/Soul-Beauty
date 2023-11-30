@@ -27,7 +27,7 @@ class ClienteRequest extends FormRequest
                 'nome' => 'required|max:120|min:5',
                 'celular' => 'required|max:11|min:10',
                 'email' => 'required|email|max:120|unique:clientes,email',
-                'cpf' => 'required|max:11|min:11|unique:clientes,cpf',
+                'cpf' => 'required|max:11|min:11|unique:clientes,cpf', 
                 'dataNascimento' => 'required',
                 'cidade' => 'required|max:120',
                 'estado' => 'required|max:2|min:2',
@@ -42,7 +42,7 @@ class ClienteRequest extends FormRequest
     }
     public function failedValidation(Validator $validator){
         throw new HttpResponseException(response()->json([
-            'sccess' => false,
+            'success' => false,
             'error' => $validator->errors()
         ]));
     }
@@ -61,6 +61,8 @@ class ClienteRequest extends FormRequest
         'email.email' => 'O formato do email é inválido',
         'cpf.required' => 'O cpf é obrigatório',
         'cpf.max' => 'O cpf deve conter no máximo 11 caracteres',
+        'cpf.min' => 'O cpf deve conter no mínimo 11 caracteres',
+        'cpf.unique' => 'O cpf já está cadastrado no sistema',
         'dataNascimento.required' => 'A data de nascimento é obrigatória',
         'dataNascimento.date' => 'A data de nascimento deve ser preenchida corretamente. (Ex: Ano/Mês/Dia)',
         'cidade.required' => 'A cidade é obrigatória',
