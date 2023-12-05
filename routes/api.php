@@ -69,6 +69,9 @@ Route::get('profissional/retornarProfissionais',
 Route::get('profissional/find/{id}',
 [ProfissionalController::class, 'pesquisarPorId']);
 
+Route::put('profissional/esqueciMinhaSenha/{id}',
+[ProfissionalController::class, 'esqueciMinhaSenha']);
+
 
 //Cliente
 Route::post('cliente/store',
@@ -97,6 +100,9 @@ Route::get('cliente/retornarClientes',
 
 Route::get('cliente/find/{id}',
 [ClienteController::class, 'pesquisarPorId']);
+
+Route::put('cliente/esqueciMinhaSenha/{id}',
+[ClienteController::class, 'esqueciMinhaSenha']);
 
 //Agenda
 Route::post('agenda/store',
