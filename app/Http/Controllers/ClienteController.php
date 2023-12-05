@@ -217,4 +217,17 @@ public function pesquisarPorId($id){
         'data' => $clientes
     ]);
 }
+
+    public function esqueciMinhaSenha(Request $request)
+    {
+        $cliente = Cliente::where('id', $request->id)->first();
+
+        if (isset($cliente)) {
+            $cliente->password = Hash::make($cliente->cpf);
+            $cliente->update();
+            return response()->json([
+                'status' => true,
+                'message' => 'Senha foi redefinida com sucesso.'
+            ]);
+        }
 }
