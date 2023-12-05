@@ -119,3 +119,6 @@ Route::put('agenda/update',
 
 Route::delete('agenda/delete/{id}',
 [AgendaController::class, 'excluirAgenda']);
+
+Route::get('agenda/retornarAgenda',
+[ClienteController::class, 'retornarTodaAgenda']);
