@@ -101,8 +101,8 @@ Route::get('cliente/retornarClientes',
 Route::get('cliente/find/{id}',
 [ClienteController::class, 'pesquisarPorId']);
 
-Route::put('cliente/esqueciMinhaSenha/{id}',
-[ClienteController::class, 'esqueciMinhaSenha']);
+Route::put('cliente/recuperarSenha',
+[ClienteController::class, 'recuperarSenha']);
 
 //Agenda
 Route::post('agenda/store',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfissionalRequest;
+use App\Http\Requests\ProfissionalUpdRequest;
 use App\Models\Profissional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -52,7 +53,7 @@ return response()->json([
 ]);
 }
 
-public function update(Request $request){
+public function update(ProfissionalUpdRequest $request){
 $profissional = Profissional::find($request->id);
 
 if(!isset($profissional)){
@@ -220,7 +221,7 @@ public function pesquisarPorId($id){
 
     public function esqueciMinhaSenha(Request $request)
     {
-        $cliente = Cliente::where('id', $request->id)->first();
+        $cliente = Profissional::where('id', $request->id)->first();
 
         if (isset($cliente)) {
             $cliente->password = Hash::make($cliente->cpf);
@@ -230,4 +231,5 @@ public function pesquisarPorId($id){
                 'message' => 'Sua senha foi redefinida com sucesso.'
             ]);
         }
+}
 }
